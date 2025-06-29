@@ -28,8 +28,22 @@ function App() {
       setAlert(null);
     }, 1500);
   }
+  const removebodyClassList = ()=>{
+    document.body.classList.remove('bg-ligth');
+    document.body.classList.remove('bg-dark');
+    document.body.classList.remove('bg-warning');
+    document.body.classList.remove('bg-success');
+    document.body.classList.remove('bg-danger');
+    document.body.classList.remove('bg-secondary');
+    document.body.classList.remove('bg-info');
+ 
+  }
 
-  const toggleMode = () => {
+  const toggleMode = (cls) => {
+    removebodyClassList();
+
+    document.body.classList.add('bg-'+cls)
+
     if (mode === 'light') {
       setMode('dark');
       document.body.style.backgroundColor = '#042743';

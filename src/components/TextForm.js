@@ -6,7 +6,7 @@ export default function TextForm(props) {
 
     // Uppercase covert
     const handleUpClick = () => {
-        console.log("Uppercasen was clicked!.." + text);
+        // console.log("Uppercasen was clicked!.." + text);
         let newText = text.toUpperCase();
         setText(newText);
         props.showAlert("Converted to Uppercase!..", "success");
@@ -14,7 +14,7 @@ export default function TextForm(props) {
     // lowercase covert
 
     const handleLoClick = () => {
-        console.log("lowercase was clicked!.." + text);
+        // console.log("lowercase was clicked!.." + text);
         let newText = text.toLowerCase();
         setText(newText);
         props.showAlert("Converted to Lowercase!..", "success");
@@ -32,7 +32,7 @@ export default function TextForm(props) {
 
     // capitalized Text
     const handleCapitalClick = () => {
-        console.log("Capitalized Case was clicked!..");
+        // console.log("Capitalized Case was clicked!..");
         let newText = text
             .split(" ")
             .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
@@ -44,7 +44,7 @@ export default function TextForm(props) {
 
     // inverse Text
     const handleinverseclick = () => {
-        console.log("inverse click is triggered");
+        // console.log("inverse click is triggered");
         let newtext = "";
         for (let i = text.length - 1; i >= 0; i--) {
             newtext += text[i];
@@ -56,11 +56,13 @@ export default function TextForm(props) {
 
     // Copy Text
     const handleCopy = () => {
-        console.log("I am Copy");
-        let text = document.getElementById("myBox");
-        text.select();
-        navigator.clipboard.writeText(text.value);
-        document.getSelection().removeAllRanges();
+        // console.log("I am Copy");
+        // let text = document.getElementById("myBox");
+        // text.select();
+        // navigator.clipboard.writeText(text.value);
+        navigator.clipboard.writeText(text);
+
+        // document.getSelection().removeAllRanges();
         props.showAlert("Copy Text!..", "success");
 
     }
@@ -76,7 +78,7 @@ export default function TextForm(props) {
 
 
     const handleOnChange = (event) => {
-        console.log("on Change!..");
+        // console.log("on Change!..");
         setText(event.target.value);
     }
 
@@ -107,7 +109,7 @@ export default function TextForm(props) {
                 <div className='d-flex'>
                     <div>
                         <h2>Your Text Summary</h2>
-                        <p>{text.split(" ").filter((element) => { return element.length !== 0 }).length} words and {text.length} characters</p>
+                        <p>{text.split(/\s+/).filter((element) => { return element.length !== 0 }).length} words and {text.length} characters</p>
                         <p>{0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length} Minutes read</p>
                     </div>  
                     <div className='mx-4'>
